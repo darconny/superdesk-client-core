@@ -4,8 +4,6 @@
 @import '~mixins.scss';
 @import '~variables.scss';
 
-$create-board-pane: 110px;
-
 .close-compare-versions {
     position: absolute;
     top: 14px; right: 14px;
@@ -21,13 +19,11 @@ $create-board-pane: 110px;
 .compare-versions-screen {
     .boards-list {
         position: absolute;
-        top: 0; left: 0; bottom: 0;
-        right: $create-board-pane;
+        top: 0; left: 0; bottom: 0; right: 0;
     }
     .boards-create {
         position: absolute;
-        top: 0; bottom: 0; right: 0;
-        width: $create-board-pane;
+        top: 0; bottom: 0; right: 0; width: 0;
         @include border-box();
         i {
             font-size: 48px;

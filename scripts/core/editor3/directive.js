@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {EditorState} from 'draft-js';
+
 import {Editor3} from './components';
 import createStore from './store';
+import {fromHTML} from './html';
+import {changeEditorState} from './actions';
 
 /**
  * @ngdoc directive
@@ -110,6 +114,14 @@ class Editor3Directive {
         this.disableSpellchecker = this.disableSpellchecker || false;
 
         const store = createStore(this);
+
+        $scope.$watch('vm.value', (newValue, oldValue) => {
+            const content = fromHTML(newValue);
+            const state = store.getState();
+            const editorState = EditorState.push(state.editorState, content, 'show-diff');
+
+            store.dispatch(changeEditorState(editorState));
+        });
 
         if (this.findReplaceTarget) {
             editor3.setStore(store);
