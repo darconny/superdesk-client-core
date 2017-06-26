@@ -14,6 +14,7 @@
                     <ul class="dropdown__menu--compare-versions" sd-compare-versions-inner-dropdown data-board="{{$index}}"></ul>
                 </div>
             </div>
+            <div ng-if="!board.article" class="board__no-article" translate>* choose article version from dropdown menu</div>
             <div sd-compare-versions-article data-article="board.article" data-compare-with="boards[1].article" data-focus="$first" class="board-article" ng-if="board.article"></div>
         </div>
     </div>
