@@ -114,17 +114,12 @@ class LinkFunction {
         diffs = this.splitByTag(diffs, '<p>');
         diffs = this.splitByTag(diffs, '</p>');
 
-<<<<<<< HEAD
         let text = this.diffMatchPatch
-=======
-        return this.diffMatchPatch
->>>>>>> feat(compare versions): Highlight the differences between versions
             .diff_prettyHtml(diffs)
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/<span><p><\/span>/g, '<p>')
             .replace(/<span><\/p><\/span>/g, '</p>')
-<<<<<<< HEAD
             .replace(/&nbsp;/g, ' ');
 
         if (this.config.features.editor3) {
@@ -133,11 +128,6 @@ class LinkFunction {
         }
 
         return text;
-=======
-            .replace(/<ins/g, '<code')
-            .replace(/<\/ins>/g, '</code>')
-            .replace(/&nbsp;/g, ' ');
->>>>>>> feat(compare versions): Highlight the differences between versions
     }
 
     /**
@@ -165,7 +155,6 @@ class LinkFunction {
         let result = [];
 
         _.map(diffs, (diff) => {
-<<<<<<< HEAD
             if (diff[1] === tag) {
                 result.push([0, tag]);
             } else {
@@ -179,20 +168,6 @@ class LinkFunction {
                     }
                 });
             }
-=======
-            var list = diff[1].split(tag);
-            var first = true;
-
-            _.map(list, (item) => {
-                if (item) {
-                    result.push([diff[0], item]);
-                }
-                if (!item || !first) {
-                    result.push([0, tag]);
-                }
-                first = false;
-            });
->>>>>>> feat(compare versions): Highlight the differences between versions
         });
 
         return result;
@@ -215,11 +190,7 @@ export function CompareVersionsArticleDirective(compareVersions, lock, $timeout,
     return {
         template: require('scripts/apps/authoring/compare-versions/views/sd-compare-versions-article.html'),
         scope: {article: '=', compareWith: '=', focus: '='},
-<<<<<<< HEAD
         link: (scope, elem) => new LinkFunction(compareVersions, lock, $timeout, config, scope, elem)
-=======
-        link: (scope, elem) => new LinkFunction(compareVersions, lock, $timeout, scope, elem)
->>>>>>> feat(compare versions): Highlight the differences between versions
     };
 }
 
